@@ -1,3 +1,6 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+
 import javax.swing.JPanel;
 
 /**
@@ -30,5 +33,16 @@ public class MainCanvas extends JPanel{
 		parent = p;
 		displayArea = new DisplayArea(this);
 		inputArea = new InputArea(this);
+		setupCanvas();
+	}
+	
+	/**
+	 * Sets up the canvas
+	 */
+	private void setupCanvas(){
+		this.setBackground(Color.RED);
+		this.setLayout(new BorderLayout());
+		add(displayArea);
+		add(inputArea, BorderLayout.SOUTH);
 	}
 }
