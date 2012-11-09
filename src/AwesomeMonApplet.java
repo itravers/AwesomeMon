@@ -7,15 +7,22 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-
+/**
+ * The main applet. This class is referred to by the html file.
+ * @author Isaac Travers
+ *
+ */
 public class AwesomeMonApplet extends JApplet{
 
-	JPanel mainPanel = new JPanel();
-	JPanel northPanel = new JPanel();
-	JPanel southPanel = new JPanel();
+	/**
+	 * The mainCanvas holds the display and input area's.
+	 */
+	MainCanvas mainCanvas;
 	
 	
-	//Called when applet is loaded into browser.
+	/**
+	 * Called as soon as the applet is loaded into the browser.
+	 */
 	public void init(){
 		
 		try {
@@ -29,19 +36,13 @@ public class AwesomeMonApplet extends JApplet{
 		}
 	}
 	
+	/**
+	 * Constructs the main window of the applet.
+	 */
 	private void buildWindow(){
 		
-		mainPanel = new JPanel(new BorderLayout());
-		northPanel = new JPanel();
-		southPanel = new JPanel();
-		
-		northPanel.setBackground(Color.RED);
-		southPanel.setBackground(Color.GREEN);
-		
-
-		mainPanel.add(northPanel, BorderLayout.NORTH);
-                mainPanel.add(southPanel, BorderLayout.SOUTH);
-		add(mainPanel);
+		mainCanvas = new MainCanvas(this);
+		add(mainCanvas);
 		
 	}
 }
