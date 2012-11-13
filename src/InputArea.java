@@ -32,8 +32,7 @@ public class InputArea extends JPanel{
 	 */
 	public InputArea (MainCanvas p){
 		parent = p;
-		button = new AwesomeButton("Add");
-		textField = new AwesomeTextField("Input Address Here");
+		
 		setupInputArea();
 	}
 	
@@ -41,7 +40,12 @@ public class InputArea extends JPanel{
 	 * Sets up the Input Area.
 	 */
 	private void setupInputArea(){
-		//this.setBackground(Color.green);
+		button = new AwesomeButton("Add");
+		textField = new AwesomeTextField("Input Address Here");
+		button.addActionListener(parent.parent.guiManager);
+		textField.addMouseListener(parent.parent.guiManager);
+		textField.addKeyListener(parent.parent.guiManager);
+		
 		add(textField);
 		add(button);
 	}

@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
@@ -40,6 +41,7 @@ public class MainCanvas extends JPanel{
 	 * Sets up the canvas
 	 */
 	private void setupCanvas(){
+		
 		this.setBackground(Color.RED);
 		this.setLayout(new BorderLayout());
 		add(displayArea);

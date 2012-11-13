@@ -201,7 +201,7 @@ public class JavaPing{
 				  
 				    //  token = token.substring(token.indexOf('/')+1);
 					  token = token.substring(0, token.indexOf('/'));
-					  Functions.DEBUG("token", token);
+					  Functions.DEBUG("token " + token);
 				  
 			}
 	     
@@ -217,8 +217,8 @@ public class JavaPing{
 		 }
 		 
 		 //Functions.setDebug(true);
-		 Functions.DEBUG("floattime", "" + floatTime);
-		 Functions.DEBUG("pingtime", "" +  pingTime);
+		 Functions.DEBUG("floattime " + floatTime);
+		 Functions.DEBUG("pingtime " +  pingTime);
 		  
 		  return pingTime;
 		  
