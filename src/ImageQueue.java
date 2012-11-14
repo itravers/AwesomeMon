@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 * @author Isaac Assegai
 *
 */
-public class ImageQueue extends LinkedList<BufferedImage>{
+public class ImageQueue extends LinkedList<PingDisplay>{
 DisplayArea parent; /** The Display Area. Parent of This Class. */
 
 /**
@@ -24,12 +24,12 @@ parent = p;
 * are present it removes the first picture before adding them.
 * @param img The picture to add.
 */
-public void addPic(BufferedImage img){
+public void addPic(PingDisplay img){
 super.addLast(img);
 	}
 
 
-public void removePic(BufferedImage img){
+public void removePic(PingDisplay img){
 	if (this.contains(img)){
 		this.remove(this.indexOf(img));
 	}

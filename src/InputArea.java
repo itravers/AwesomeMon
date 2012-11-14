@@ -20,6 +20,7 @@ public class InputArea extends JPanel{
 	 * The Button the user uses.
 	 */
 	AwesomeButton button;
+	AwesomeButton testButton;
 
 	/**
 	 * The parent of this class.
@@ -41,12 +42,15 @@ public class InputArea extends JPanel{
 	 */
 	private void setupInputArea(){
 		button = new AwesomeButton("Add");
+		testButton = new AwesomeButton("Test");
 		textField = new AwesomeTextField("Input Address Here");
 		button.addActionListener(parent.parent.guiManager);
+		testButton.addActionListener(parent.parent.guiManager);
 		textField.addMouseListener(parent.parent.guiManager);
 		textField.addKeyListener(parent.parent.guiManager);
 		
 		add(textField);
 		add(button);
+		add(testButton);
 	}
 }

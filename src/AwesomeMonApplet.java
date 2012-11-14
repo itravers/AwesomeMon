@@ -54,8 +54,8 @@ public class AwesomeMonApplet extends JApplet{
 	 	                    } catch (Exception e) {
 	 	                        e.printStackTrace();
 	 	                    }
-	 	                    Functions.DEBUG(
-	 	                        "child thread  " + new Date(System.currentTimeMillis()));
+	 	                   // Functions.DEBUG(
+	 	                   //     "child thread  " + new Date(System.currentTimeMillis()));
 	 	                    repaint();
 	                	}
 	                   

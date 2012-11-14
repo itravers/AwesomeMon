@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class DisplayArea extends JPanel {
 		this.setPreferredSize(new Dimension(600, 350));
 		this.setBackground(Color.blue);
 		imageQueue = new ImageQueue(this);
+		this.addMouseMotionListener(parent.parent.guiManager);
 	}
 	
 	public void addToQueue(PingDisplay d){
@@ -59,8 +61,13 @@ public class DisplayArea extends JPanel {
 				int j = Functions.convertBase4(i, n);
 				
 				if(imageQueue.size() > j){
-					BufferedImage img = imageQueue.get(j);
+					BufferedImage img = imageQueue.get(j).currentImage;
 					g.drawImage(img, n * img.getWidth(), i * img.getHeight(), null);
+					g.setFont(new Font("Thoma", Font.BOLD,14));
+					g.setColor(Color.white);
+					int width = g.getFontMetrics().stringWidth(imageQueue.get(j).name);
+					int height = g.getFontMetrics().getHeight();
+					g.drawString(imageQueue.get(j).name, (n * img.getWidth())+((img.getWidth()-width)/2), (i * img.getHeight())+((img.getHeight()/2)+height/2));
 				}
 				
 			}

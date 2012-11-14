@@ -120,23 +120,23 @@ public class Functions {
 		}
 	}
 
-	
-	
-	public static BufferedImage getPic(URL u){
+	public static BufferedImage getPic(URL u) {
 		BufferedImage img = null;
 		try {
 			img = ImageIO.read(u);
-		}catch (IOException e){
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return img;
 	}
 
-	public static BufferedImage scaleImage(BufferedImage img, int width, int height) {
-		
+	public static BufferedImage scaleImage(BufferedImage img, int width,
+			int height) {
+
 		BufferedImage newImage = new BufferedImage(width, height,
-				BufferedImage.TYPE_INT_RGB);
+				BufferedImage.BITMASK);
+
 		Graphics2D g = newImage.createGraphics();
 		try {
 			g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
@@ -148,9 +148,10 @@ public class Functions {
 		}
 		return newImage;
 	}
-	
-	public static BufferedImage scale(BufferedImage img, int width, int height){
-		return (BufferedImage) img.getScaledInstance(width, height, BufferedImage.SCALE_SMOOTH);
+
+	public static BufferedImage scale(BufferedImage img, int width, int height) {
+		return (BufferedImage) img.getScaledInstance(width, height,
+				BufferedImage.SCALE_SMOOTH);
 	}
 
 	/**

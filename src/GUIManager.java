@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -14,13 +15,15 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 
-public class GUIManager implements ActionListener, MouseListener, KeyListener{
+public class GUIManager implements ActionListener, MouseListener, KeyListener, MouseMotionListener{
 
 	AwesomeMonApplet parent;
+	int tracker;
 	
 	public GUIManager(AwesomeMonApplet p){
 		parent = p;
 		Functions.DEBUG("GUI MANAGER RUNNING");
+		tracker = 0;
 	}
 	
 	
@@ -35,6 +38,27 @@ public class GUIManager implements ActionListener, MouseListener, KeyListener{
 			}else{
 				badInput();
 			}
+		}else if(e.getActionCommand().equals("Test")){
+			if(tracker == 0){
+				parent.mainCanvas.displayArea.imageQueue.get(0).currentImage = parent.mainCanvas.displayArea.imageQueue.get(0).redPressed;
+				tracker++;
+			}else if(tracker ==1 ){
+				parent.mainCanvas.displayArea.imageQueue.get(0).currentImage = parent.mainCanvas.displayArea.imageQueue.get(0).greenUnpressed;
+				tracker++;
+			}else if(tracker == 2){
+				parent.mainCanvas.displayArea.imageQueue.get(0).currentImage = parent.mainCanvas.displayArea.imageQueue.get(0).greenPressed;
+				tracker++;
+			}else if(tracker == 3){
+				parent.mainCanvas.displayArea.imageQueue.get(0).currentImage = parent.mainCanvas.displayArea.imageQueue.get(0).yellowPressed;
+				tracker++;
+			}else if(tracker == 4){
+				parent.mainCanvas.displayArea.imageQueue.get(0).currentImage = parent.mainCanvas.displayArea.imageQueue.get(0).yellowUnpressed;
+				tracker++;
+			}else if(tracker == 5){
+				parent.mainCanvas.displayArea.imageQueue.get(0).currentImage = parent.mainCanvas.displayArea.imageQueue.get(0).redUnpressed;
+				tracker = 0;
+			}
+			
 		}
 	}
 
@@ -46,6 +70,8 @@ public class GUIManager implements ActionListener, MouseListener, KeyListener{
 		
 		if(e.getComponent() == parent.mainCanvas.inputArea.textField){
 			parent.mainCanvas.inputArea.textField.setText("");
+		}else{
+			
 		}
 		
 	}
@@ -110,16 +136,9 @@ public class GUIManager implements ActionListener, MouseListener, KeyListener{
 	public void addPressed(){
 		Functions.DEBUG("Add Pressed");
 		String text = parent.mainCanvas.inputArea.textField.getText();
-		String address = "images/redUnpressed.png";
-		URL u;
-		BufferedImage img = null;
-		u = this.getClass().getResource(address);
-		img = Functions.getPic(u);
+	    PingDisplay pingDisplay = new PingDisplay(text, this);
 		
-		
-		img = Functions.scaleImage(img, parent.mainCanvas.displayArea.getWidth()/4, parent.mainCanvas.displayArea.getHeight()/4);
-		
-		parent.mainCanvas.displayArea.imageQueue.add(img);
+		parent.mainCanvas.displayArea.imageQueue.add(pingDisplay);
 	}
 	
 	public void badInput(){
@@ -129,6 +148,24 @@ public class GUIManager implements ActionListener, MouseListener, KeyListener{
 	
 	private boolean validateInput(){
 		return parent.mainCanvas.inputArea.textField.validateTyping();
+	}
+
+
+
+
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		//System.out.println("Mouse: " + e.getX() + " " + e.getY());
+		//check if mouse is over pingDisplays to make the ping display slightly lighter.
+		
 	}
 
 
