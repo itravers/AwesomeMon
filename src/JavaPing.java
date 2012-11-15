@@ -17,6 +17,7 @@ import java.util.*;
  */
 public class JavaPing{
 	
+	
 	/**
 	 * Constructor
 	 */
@@ -30,6 +31,7 @@ public class JavaPing{
 	 * @return The ping time.
 	 */
 	public int ping(String addr){
+		System.out.println("pinging " + addr);
 		String os = Functions.getOs();
 		if(os.equals("windows")){
 			return windowsPing(addr);
