@@ -3,6 +3,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.net.URL;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -15,6 +16,7 @@ import javax.swing.JPanel;
  */
 public class DisplayArea extends JPanel {
 	MainCanvas parent;
+	BufferedImage backgroundImage;
 	ImageQueue imageQueue;
 
 	/**
@@ -25,9 +27,13 @@ public class DisplayArea extends JPanel {
 	 */
 	public DisplayArea(MainCanvas p) {
 		parent = p;
+		setupBackground();
 		this.setPreferredSize(new Dimension(600, 350));
-		this.setBackground(Color.blue);
+		this.setBackground(Color.gray);
 		imageQueue = new ImageQueue(this);
+		
+		
+		
 		this.addMouseMotionListener(parent.parent.guiManager);
 	}
 	
@@ -46,7 +52,13 @@ public class DisplayArea extends JPanel {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		g.drawImage(backgroundImage,(getWidth()-backgroundImage.getWidth())/2, (getHeight()-backgroundImage.getHeight())/2, null);
 		paintPingDisplays(g);
+	}
+	
+	private void setupBackground(){
+		URL u = this.getClass().getResource("images/logo.png");
+		backgroundImage = Functions.getPic(u);
 	}
 
 	/**

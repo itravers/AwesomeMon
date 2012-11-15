@@ -1,6 +1,10 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.net.URL;
 
 import javax.swing.JPanel;
 
@@ -37,6 +41,8 @@ public class MainCanvas extends JPanel{
 		setupCanvas();
 	}
 	
+	
+	
 	/**
 	 * Sets up the canvas
 	 */
@@ -47,4 +53,6 @@ public class MainCanvas extends JPanel{
 		add(displayArea);
 		add(inputArea, BorderLayout.SOUTH);
 	}
+	
+  
 }

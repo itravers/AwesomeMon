@@ -35,4 +35,23 @@ public void removePic(PingDisplay img){
 	}
 }
 
+public boolean containsName(String name){
+	boolean value = false;
+	for(int i = 0; i < this.size(); i++){
+		if(this.get(i).name.equals(name)){
+			value = true;
+			return value;
+		}
+	}
+	return value;
+}
+
+public void removeName(String name){
+	for(int i = 0; i < this.size(); i++){
+		if(this.get(i).name.equals(name)){
+			this.remove(i);
+		}
+	}
+}
+
 }

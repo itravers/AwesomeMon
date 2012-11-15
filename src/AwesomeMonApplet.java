@@ -27,6 +27,8 @@ public class AwesomeMonApplet extends JApplet{
 	 */
 	GUIManager guiManager;
 	
+	PingManager pingManager;
+	
 	
 	/**
 	 * Called as soon as the applet is loaded into the browser.
@@ -69,6 +71,7 @@ public class AwesomeMonApplet extends JApplet{
 	private void buildWindow(){
 		this.setSize(new Dimension(600, 400));
 		Functions.setDebug(true);
+		pingManager = new PingManager(this);
 		guiManager = new GUIManager(this);
 		mainCanvas = new MainCanvas(this);
 		
