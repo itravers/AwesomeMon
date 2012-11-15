@@ -171,5 +171,9 @@ public class Functions {
 		// answer);
 		return answer;
 	}
+	
+	public static String getVersion(){
+		return "ver: 0.0.0";
+	}
 
 }

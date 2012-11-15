@@ -32,9 +32,15 @@ public class DisplayArea extends JPanel {
 		this.setBackground(Color.gray);
 		imageQueue = new ImageQueue(this);
 		
-		
-		
 		this.addMouseMotionListener(parent.parent.guiManager);
+	}
+	
+	public void reportPing(int pingTime, String address){
+		for(int i = 0; i < imageQueue.size(); i++){
+			if(imageQueue.get(i).name.equals(address)){
+				imageQueue.get(i).setPingTime(pingTime);
+			}
+		}
 	}
 	
 	public void addToQueue(PingDisplay d){

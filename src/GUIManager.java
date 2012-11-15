@@ -131,14 +131,16 @@ public class GUIManager implements ActionListener, MouseListener, KeyListener,
 	public void addPressed() {
 		Functions.DEBUG("Add Pressed");
 		
+		String text = parent.mainCanvas.inputArea.textField.getText();
+		
 		if(parent.mainCanvas.displayArea.imageQueue.containsName(parent.mainCanvas.inputArea.textField.getText())){
 			parent.mainCanvas.displayArea.imageQueue.removeName(parent.mainCanvas.inputArea.textField.getText());
+			parent.backendConnector.removePing(text);
 		}else{
-			String text = parent.mainCanvas.inputArea.textField.getText();
 			PingDisplay pingDisplay = new PingDisplay(text, this);
-
 			parent.mainCanvas.displayArea.imageQueue.add(pingDisplay);
 			parent.mainCanvas.inputArea.textField.setText("");
+			parent.backendConnector.ping(text);
 		}
 		
 	}

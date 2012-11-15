@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Graphics;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -52,5 +53,15 @@ public class InputArea extends JPanel{
 		add(textField);
 		add(button);
 		add(testButton);
+	}
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		paintVersion(g);
+	}
+	
+	private void paintVersion(Graphics g){
+		String version = Functions.getVersion();
+		g.drawString(version, 10, 10);
 	}
 }

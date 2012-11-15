@@ -27,7 +27,7 @@ public class AwesomeMonApplet extends JApplet{
 	 */
 	GUIManager guiManager;
 	
-	PingManager pingManager;
+	BackendConnector backendConnector;
 	
 	
 	/**
@@ -71,7 +71,7 @@ public class AwesomeMonApplet extends JApplet{
 	private void buildWindow(){
 		this.setSize(new Dimension(600, 400));
 		Functions.setDebug(true);
-		pingManager = new PingManager(this);
+		backendConnector = new BackendConnector(this);
 		guiManager = new GUIManager(this);
 		mainCanvas = new MainCanvas(this);
 		
