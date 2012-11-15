@@ -1,17 +1,31 @@
 import java.util.LinkedList;
 
+
+/**
+ * This class has a Thread pool that loops over the queue and executes all the 
+ * runnable Pingers.
+ * @author Isaac Travers
+ *
+ */
 public class WorkQueue
 {
 	PingManager parent;
     private final int nThreads;
     private final PoolWorker[] threads;
     private final LinkedList queue;
+    private final LinkedList queueList;
 
+    /**
+     * Constructor
+     * @param nThreads The number of threads you want in this workqueues threadpool
+     * @param p The parent of this class.
+     */
     public WorkQueue(int nThreads, PingManager p)
     {
     	parent = p;
         this.nThreads = nThreads;
         queue = new LinkedList();
+        queueList = new LinkedList();
         threads = new PoolWorker[nThreads];
 
         for (int i=0; i<nThreads; i++) {
@@ -20,41 +34,71 @@ public class WorkQueue
         }
     }
 
+    /**
+     * The instruction to add a runnable to the thread queue.
+     * It should automagically start processing.
+     * @param r The Runnable Pinger you want the workqueue to run.
+     */
     public void execute(Runnable r) {
         synchronized(queue) {
             queue.addLast(r);
             queue.notify();
         }
+        synchronized(queueList){
+        	queueList.addLast(r);
+        	queueList.notify();
+        }
     }
     
 
+    /**
+     * Adds the runnable to the queue. This only calls execute.
+     * @param r The runnable Pinger to add.
+     */
     public void addToQueue(Runnable r){
-    	
     		execute(r);
+    }
+    
+    /**
+     * This method removes the pinger from the queuelist. Later when the pool worker
+     * finishes executing a ping, it checks to see if the current item it is executing
+     * is still in the pingList, if it is it adds that item back to the queue.
+     * If it is not in the queuelist, it just drops the queue. Letting the garabage
+     * manager take care of it later.
+     * @param address The address to take out of the workqueue
+     */
+    public void removeFromQueue(String address){
+    	for(int i = 0; i < queueList.size(); i++){
+    		
+    			if(((Pinger)queueList.get(i)).address.equals(address)){
+    				queueList.remove(i);
+    			}
+    	}
     	
     }
     
-    public Runnable removeFromQueue(){
-    	synchronized(queue){
-    		return (Runnable) queue.removeFirst();
-    	}
-    }
-    
-    public Runnable removeFromQueue(Runnable r){
-    	int index = queue.indexOf(r);
-    	return (Runnable) queue.remove(index);
-    }
-    
-    public void removeFromQueue(String address){
-    	for(int i = 0; i < queue.size(); i++){
+    /**
+     * This is the method that checks to see if the current item is in the queuelist.
+     * If it is it adds the item back to the queue, if it is not present it just drops it.
+     * @param r The object to check and add.
+     */
+    private void checkAndAddToQueue(Runnable r){
+    	
+    	if(queueList.contains(r)){
     		synchronized(queue){
-    			if (((Pinger)queue.get(i)).address.equals(address)){
-    				queue.remove(i);
-    			}
-    		}
+        		queue.addLast(r);
+        	}
+    	}else{
+    		Functions.DEBUG("Removing " + ((Pinger)r).address);
     	}
+    	
     }
 
+    /**
+     * This is the worker thread that process the queue
+     * @author Isaac Travers
+     *
+     */
     private class PoolWorker extends Thread {
         public void run() {
             Runnable r;
@@ -83,9 +127,8 @@ public class WorkQueue
                     // You might want to log something here
                 }
                 
-                synchronized(queue){
-                	queue.addLast(r);
-                }
+                	checkAndAddToQueue(r);
+                
             }
         }
     }

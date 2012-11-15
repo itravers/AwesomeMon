@@ -15,9 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 /**
- * StandardButton.java
+ * Customer button, because the normal java button sucks.
  * 
- * @author Isaac Assegai
+ * @author Isaac Travers
  * 
  */
 public class AwesomeButton extends JButton {
@@ -32,8 +32,7 @@ public class AwesomeButton extends JButton {
 	/**
 	 * Constructor
 	 * 
-	 * @param text
-	 *            The Name of the Button.
+	 * @param text The Name of the Button.
 	 */
 	public AwesomeButton(String text) {
 		super();
@@ -71,7 +70,7 @@ public class AwesomeButton extends JButton {
 	}
 
 	/**
-	 * Paints teh button components.
+	 * Paints the button components.
 	 */
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g.create();

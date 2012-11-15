@@ -1,5 +1,9 @@
 
-
+/**
+ * Tests to see what the current os is. Not used in final version.
+ * @author Isaac Travers
+ *
+ */
 public class TestOS {
 
 	/**

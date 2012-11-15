@@ -27,7 +27,11 @@ public class AwesomeMonApplet extends JApplet{
 	 */
 	GUIManager guiManager;
 	
+	/**
+	 * The class used to connect either the local backend or the network backend.
+	 */
 	BackendConnector backendConnector;
+	
 	
 	
 	/**
@@ -46,6 +50,9 @@ public class AwesomeMonApplet extends JApplet{
 		}
 	}
 	
+	/**
+	 * This class basically only repaints the main interface every 200ms.
+	 */
 	public void start(){
 		new Thread(
 	            new Runnable() {
@@ -60,7 +67,6 @@ public class AwesomeMonApplet extends JApplet{
 	 	                   //     "child thread  " + new Date(System.currentTimeMillis()));
 	 	                    repaint();
 	                	}
-	                   
 	                }
 	            }).start();
 	}
@@ -74,9 +80,7 @@ public class AwesomeMonApplet extends JApplet{
 		backendConnector = new BackendConnector(this);
 		guiManager = new GUIManager(this);
 		mainCanvas = new MainCanvas(this);
-		
 		add(mainCanvas);
-		
 	}
 	
 	 

@@ -5,6 +5,12 @@ import java.net.URL;
 
 import javax.swing.ImageIcon;
 
+/**
+ * This class contains the images displayed. Later the images will be moved to a static class
+ * and this class will only contain the currentImage.
+ * @author Isaac Travers
+ *
+ */
 public class PingDisplay extends Component{
 
 	BufferedImage redUnpressed;
@@ -21,6 +27,12 @@ public class PingDisplay extends Component{
 	String name;
 	int pingTime;
 
+	/**
+	 * Constructor
+	 * @param name The address being pung, this is displayed in the middle of the ping display.
+	 * @param pingTime The pingtime, this decides the current color image.
+	 * @param parent The parent of this class, probably a GUImanager.
+	 */
 	public PingDisplay(String name, int pingTime, GUIManager parent) {
 		this.name = name;
 		this.pingTime = pingTime;
@@ -30,23 +42,44 @@ public class PingDisplay extends Component{
 		this.addMouseListener(parent);
 	}
 	
+	/**
+	 * Constructor
+	 * @param name Make's a constructor that doesn't have a current pingtime
+	 * @param parent
+	 */
 	public PingDisplay(String name, GUIManager parent){
 		this(name, 0, parent);
 	}
 
+	/**
+	 * Gets the current pingtime being shown by the pingdisplay.
+	 * @return
+	 */
 	public int getPingTime() {
 		return pingTime;
 	}
 
+	/**
+	 * Sets the current pingtime. This will also change colors if pingtime is in a different latency category.
+	 * @param time
+	 */
 	public void setPingTime(int time) {
 		pingTime = time;
 		setColor(pingTime);
 	}
 	
+	/**
+	 * Gets the current image of the pingDisplay.
+	 * @return The current Image
+	 */
 	public BufferedImage getCurrentImage(){
 		return currentImage;
 	}
 	
+	/**
+	 * Sets the current image to a new image.
+	 * @param i The new image.
+	 */
 	public void setCurrentImage(BufferedImage i){
 		currentImage = i;
 	}
@@ -55,6 +88,10 @@ public class PingDisplay extends Component{
 		
 	}
 	
+	/**
+	 * Decides the color of the pingDisplay based on latency.
+	 * @param latency The latency of the ping.
+	 */
 	private void setColor(int latency){
 		if(latency <= 0){
 			setCurrentImage(redUnpressed);
@@ -65,7 +102,9 @@ public class PingDisplay extends Component{
 		}
 	}
 	
-	
+	/**
+	 * Loads images.
+	 */
 	private void initImages(){
 		String redUnpressedAddress = "images/redUnpressed.png";
 		String redPressedAddress = "images/redPressed.png";

@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 /**
  * The Image Queue to be displayed by the gui.
  * 
- * @author Isaac Assegai
+ * @author Isaac Travers
  * 
  */
 public class ImageQueue extends LinkedList<PingDisplay> {
@@ -34,12 +34,21 @@ public class ImageQueue extends LinkedList<PingDisplay> {
 		super.addLast(img);
 	}
 
+	/**
+	 * Removes an image from the queue.
+	 * @param img The image to remove
+	 */
 	public void removePic(PingDisplay img) {
 		if (this.contains(img)) {
 			this.remove(this.indexOf(img));
 		}
 	}
 
+	/**
+	 * Checks to see if the queue contains an image with the passed in name.
+	 * @param name The passed in name.
+	 * @return True or False.
+	 */
 	public boolean containsName(String name) {
 		boolean value = false;
 		for (int i = 0; i < this.size(); i++) {
@@ -51,6 +60,10 @@ public class ImageQueue extends LinkedList<PingDisplay> {
 		return value;
 	}
 
+	/**
+	 * Removes a picture from the image queue if it has this same name.
+	 * @param name The address to remove.
+	 */
 	public void removeName(String name) {
 		for (int i = 0; i < this.size(); i++) {
 			if (this.get(i).name.equals(name)) {

@@ -1,5 +1,9 @@
 
-
+/**
+ * Tests pings, unused in final version.
+ * @author Isaac Travers
+ *
+ */
 public class Tester {
 
 	/**

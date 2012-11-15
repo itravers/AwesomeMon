@@ -120,6 +120,11 @@ public class Functions {
 		}
 	}
 
+	/**
+	 * Gets a buffered image from the file system.
+	 * @param u The url to look for the buffered image.
+	 * @return The buffered image, if it has been found.
+	 */
 	public static BufferedImage getPic(URL u) {
 		BufferedImage img = null;
 		try {
@@ -131,6 +136,13 @@ public class Functions {
 		return img;
 	}
 
+	/**
+	 * Scales a buffered image.
+	 * @param img The image to change
+	 * @param width The new width
+	 * @param height The new height
+	 * @return The resized image.
+	 */
 	public static BufferedImage scaleImage(BufferedImage img, int width,
 			int height) {
 
@@ -149,6 +161,14 @@ public class Functions {
 		return newImage;
 	}
 
+	/**
+	 * 
+	 * Scales a buffered image.
+	 * @param img The image to change
+	 * @param width The new width
+	 * @param height The new height
+	 * @return The resized image.
+	 */
 	public static BufferedImage scale(BufferedImage img, int width, int height) {
 		return (BufferedImage) img.getScaledInstance(width, height,
 				BufferedImage.SCALE_SMOOTH);
@@ -172,6 +192,10 @@ public class Functions {
 		return answer;
 	}
 	
+	/**
+	 * Returns the current version of the program in a string.
+	 * @return The current version of the program.
+	 */
 	public static String getVersion(){
 		return "ver: 0.0.0";
 	}

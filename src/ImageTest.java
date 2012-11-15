@@ -7,6 +7,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/**
+ * This class used to test image loading and drawing. Unused in final program.
+ * @author noc1
+ *
+ */
 public class ImageTest extends JPanel {
 
    Image castle;

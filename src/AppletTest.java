@@ -4,7 +4,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-
+/**
+ * This was just to test applets. Isn't needed for final program.
+ * @author Isaac Travers
+ *
+ */
 public class AppletTest extends JApplet{
 
 	JPanel mainPanel = new JPanel();

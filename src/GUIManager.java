@@ -14,16 +14,25 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
+/**
+ * This class manages changes in the gui. It also listens for actions from the mouse and keyboard in the entire applet.
+ * @author Isaac Travers
+ *
+ */
 public class GUIManager implements ActionListener, MouseListener, KeyListener,
 		MouseMotionListener {
 
 	AwesomeMonApplet parent;
-	int tracker;
+	int tracker; //just used for the debug test button.
 
+	/**
+	 * Constructor
+	 * @param p The parent of this class.
+	 */
 	public GUIManager(AwesomeMonApplet p) {
 		parent = p;
 		Functions.DEBUG("GUI MANAGER RUNNING");
-		tracker = 0;
+		tracker = 0; //test button.
 	}
 
 	@Override
@@ -128,6 +137,11 @@ public class GUIManager implements ActionListener, MouseListener, KeyListener,
 
 	}
 
+	/**
+	 * Triggered when the add button is pressed. It reads the textbox. If the address in the textbox
+	 * is already being pung then it removes the ping from the backend. IF it is not already being pung
+	 * then it creates a new Pinger and adds that to the backend.
+	 */
 	public void addPressed() {
 		Functions.DEBUG("Add Pressed");
 		
@@ -145,12 +159,20 @@ public class GUIManager implements ActionListener, MouseListener, KeyListener,
 		
 	}
 
+	/**
+	 * Sets the textbox text when bad input has been input and add has been pressed.
+	 */
 	public void badInput() {
 		Functions.DEBUG("Bad Input");
 		parent.mainCanvas.inputArea.textField
 				.setText(" Invalid: Domain or IP ONLY! ");
 	}
 
+	/**
+	 * Validates the input in the text box, the text will turn green when it is good input.
+	 * Good input is an ip address or a .com .net .org, etc.
+	 * @return
+	 */
 	private boolean validateInput() {
 		return parent.mainCanvas.inputArea.textField.validateTyping();
 	}

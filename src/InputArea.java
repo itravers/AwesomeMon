@@ -21,7 +21,7 @@ public class InputArea extends JPanel{
 	 * The Button the user uses.
 	 */
 	AwesomeButton button;
-	AwesomeButton testButton;
+	AwesomeButton testButton; //just for testing
 
 	/**
 	 * The parent of this class.
@@ -55,11 +55,18 @@ public class InputArea extends JPanel{
 		add(testButton);
 	}
 	
+	/**
+	 * Paints the components in the input area.
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		paintVersion(g);
 	}
 	
+	/**
+	 * Paints the programs version number.
+	 * @param g The graphics context to paint to.
+	 */
 	private void paintVersion(Graphics g){
 		String version = Functions.getVersion();
 		g.drawString(version, 10, 10);

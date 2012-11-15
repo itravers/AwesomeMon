@@ -1,4 +1,8 @@
-
+/**
+ * The network backend. This class will connect to the network manager.
+ * @author Isaac Travers
+ *
+ */
 public class NetworkBackend implements BackEnd{
 
 	BackendConnector parent;
