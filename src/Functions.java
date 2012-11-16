@@ -197,7 +197,7 @@ public class Functions {
 	 * @return The current version of the program.
 	 */
 	public static String getVersion(){
-		return "ver: 0.0.0";
+		return "ver: 0.0.0.a";
 	}
 
 }
