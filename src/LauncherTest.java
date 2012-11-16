@@ -24,6 +24,7 @@ public class LauncherTest {
 	}
 	
 	/**
+	 * Hi!
 	 * Constructor.
 	 */
 	public LauncherTest(){
