@@ -30,6 +30,8 @@ public class LauncherTest {
 	public LauncherTest(){
 		JFrame frame = new JFrame("test");
 		frame.setVisible(true);
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 		applet = new AwesomeMonApplet();
 		applet.init();
